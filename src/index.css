@@ -71,7 +71,14 @@ button{
   background: hsl(224, 47%, 62%);
   color: #fff;
   margin-top: 8px;
-
+}
+.move{
+  padding: 8px 32px;
+  border-radius: 4px;
+  background: hsl(224, 47%, 62%);
+  color: #fff;
+  margin-top: 8px;
+  width: 210px;
 }
 input{
   padding: 8px 16px;

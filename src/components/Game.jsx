@@ -43,17 +43,38 @@ const Board = ({ xIsNext, squares, onPlay, resetGame }) => {
 
 const Game = () => {
     
-    const [xIsNext, setXIsNext] = useState(true)
     const [history, setHistory] = useState([Array(9).fill(null)])
-    const currentSquares = history[history.length - 1]
+    const [currentMove, setCurrentMove] = useState(0)
+    const xIsNext = currentMove % 2 === 0
+    const currentSquares = history[currentMove]
     
     function handlePlay(nextSquares) {
-        setHistory([...history, nextSquares])
-        setXIsNext(!xIsNext)
+        const nextHistory = [...history.slice(0, currentMove + 1), nextSquares]
+        setHistory(nextHistory)
+        setCurrentMove(nextHistory.length - 1)
+        // setXIsNext(!xIsNext)
     }
+
+    function jumpTo(nextMove){
+        setCurrentMove(nextMove)
+        // setXIsNext(nextMove % 2 === 0 )
+    }
+
+    const moves = history.map((squares, move) => {
+        let description
+        description = (move > 0) ? `Go to move: ${move}` : 'Go to game start'
+
+        return(
+            <div key={move} className="move-cont">
+                <button onClick={() => jumpTo(move)} className="move">{description}</button>
+            </div>
+        )
+    })
+
     const resetGame = () => {
-        setHistory([Array(9).fill(null)]);
-        setXIsNext(true);
+        setHistory([Array(9).fill(null)])
+        setCurrentMove(0)
+        // setXIsNext(true);
     }
     
     return(
@@ -63,7 +84,7 @@ const Game = () => {
             <div className="card-body">
                 <Board xIsNext={xIsNext} squares={currentSquares} onPlay={handlePlay} resetGame={resetGame} />
             
-                <div className="history"></div>
+                <div className="history">{moves}</div>
             </div>
         </div>
     </section>
@@ -71,9 +92,6 @@ const Game = () => {
 }
 
 const calculateWinner = (squares) => {
-    if(!squares){
-        return null
-    }
 
     const lines = [
         [0, 1, 2],
