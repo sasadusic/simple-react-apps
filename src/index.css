@@ -1,9 +1,11 @@
-*{
+*, *::before, *::after{
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   color: #2e2e2e;
+  box-sizing: border-box;
 }
+
 header{
   padding: 40px 120px;
   display: flex;
@@ -107,6 +109,9 @@ input:focus{
 .success{
   color: #27ae60;
 }
+.warning{
+  color: #ff7f50;
+}
 .task-cont{
   margin-top: 24px;
 }
@@ -167,4 +172,51 @@ input:focus{
 .status{
   color: hsl(224, 47%, 82%);
   font-size: 24px;
+}
+.calc-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  padding: 18px;
+  border-radius: 6px;
+  width: 300px;
+  /* height: 450px; */
+} 
+.calc-btn{
+  background: hsl(224, 47%, 62%);
+  background-color: hsl(224, 47%, 82%);
+  border-radius: 4px;
+  height: 50px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  
+}
+.span-two{
+  grid-column: span 2;
+}
+.output{
+  grid-column: span 4; 
+  background: hsl(224, 47%, 22%);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  height: 76px;
+  align-items: flex-end;
+  justify-content: space-between;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.prev-operand{
+  color: hsl(224, 47%, 72%);
+  font-size: 16px;
+}
+.cur-operand{
+  color: hsl(224, 47%, 92%);
+  font-size: 24px;
+}
+.current-image{
+  width: 300px;
 }
