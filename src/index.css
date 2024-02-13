@@ -33,6 +33,7 @@ main{
   margin-bottom: 24px;
 }
 .card-body{
+  position: relative;
   display: flex;
   align-items: top;
   gap: 40px;
@@ -217,6 +218,50 @@ input:focus{
   color: hsl(224, 47%, 92%);
   font-size: 24px;
 }
+.card-body.slider{
+  width: 600px;
+  padding-bottom: 28px;
+}
 .current-image{
-  width: 300px;
+  width: 100%;
+}
+.arrow{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  /* color: #fff !important; */
+  background: #d6d6d6;
+  border-radius: 50%;
+  /* filter: drop-shadow(0px 0px 5px #555) */
+  top: 50%;
+  transform: translateY(-50%);
+}
+.arrow-left{
+  left: 24px;
+}
+.arrow-right{
+  right: 24px;
+}
+.circle-indicators{
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.current-indicator{
+  background-color: #505050;
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+  outline-color: transparent;
+  margin: 0 0.2rem;
+  cursor: pointer;
+}
+.update-current-image{
+  display: none;
+}
+.inactive-indicator{
+  background-color: #a9a9a9;
 }

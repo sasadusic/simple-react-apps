@@ -25,6 +25,14 @@ const Slider = ({ url, limit, page }) => {
         }
     }
 
+    function handlePrevious(){
+      setCurrentSlider(currentSlider === 0 ? images.length - 1 : currentSlider - 1)
+    }
+
+    function handleNext(){
+      setCurrentSlider(currentSlider === images.length - 1 ? 0 : currentSlider + 1)
+    }
+
     useEffect(() => {
         if(url !== '') fetchImages(url)
     }, [url])
@@ -57,16 +65,16 @@ const Slider = ({ url, limit, page }) => {
     <section>
       <div className="card">
         <h2>Image Slider</h2>
-        <div className="card-body">
-            <BsArrowLeftCircleFill className='arrow arrow-left' />
-            {images && images.length ? images.map(imageItem => (
-                <img key={imageItem.id} alt={imageItem.download_url} src={imageItem.download_url} className='current-image' />
+        <div className="card-body slider">
+            <BsArrowLeftCircleFill onClick={handlePrevious} className='arrow arrow-left' />
+            {images && images.length ? images.map((imageItem, index) => (
+                <img key={imageItem.id} alt={imageItem.download_url} src={imageItem.download_url} className={currentSlider === index ? 'current-image' : 'current-image update-current-image'} />
                 )) : null}
-                <BsArrowRightCircleFill className='arrow arrow-right' />
+                <BsArrowRightCircleFill onClick={handleNext} className='arrow arrow-right' />
                 <span className='circle-indicators'>
                     {
                         images && images.length ?  images.map((_, index) => (
-                            <button key={index} className='current-indicator'></button>
+                            <button onClick={() => setCurrentSlider(index)} key={index} className={currentSlider === index ? 'current-indicator' : 'current-indicator inactive-indicator'}></button>
                             )) : null
                     }
                 </span>
