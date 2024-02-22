@@ -285,6 +285,23 @@ input:focus{
 .inactive-indicator{
   background-color: #a9a9a9;
 }
+.forms .card-right{
+  /* margin-top: 46px; */
+  margin-left: 10vw;
+}
+.data{
+  font-size: 24px;
+  margin-bottom: 12px;
+  color: #2e2e2e;
+  display: flex;
+  width: 300px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid  rgba(74, 105, 189, 0.6);
+}
+.data .data-span{
+  color: #6e6e6e;
+  width: 150px;
+}
 @media (width < 992px) {
   header, main, footer{
     padding: 40px 40px;
