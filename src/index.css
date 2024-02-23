@@ -102,6 +102,10 @@ label{
   margin-top: 24px;
   margin-bottom: 8px;
 }
+.inline{
+  display: inline;
+  margin-right: 24px;
+}
 input{
   padding: 8px 16px;
   border: none;
@@ -113,6 +117,22 @@ input{
 }
 input:focus{
   border: 2px solid rgba(52, 73, 94, 01);
+}
+input[type='checkbox'], input[type='radio']{
+  display: inline;
+  margin: 0;
+  margin-bottom: 24px;
+  margin-top: 12px;
+  width: 20px;
+  margin-right: 12px;
+}
+textarea{
+  padding: 12px;
+  width: min(400px, 100%);
+  border-radius: 6px;
+  border: 2px solid rgba(52, 73, 94, 0.3);
+  display: block;
+  margin-bottom: 24px;
 }
 .question{
   font-size: 24px;
@@ -301,6 +321,12 @@ input:focus{
 .data .data-span{
   color: #6e6e6e;
   width: 150px;
+}
+.card-left{
+  flex: 1;
+}
+.card-right{
+  flex: 1;
 }
 @media (width < 992px) {
   header, main, footer{

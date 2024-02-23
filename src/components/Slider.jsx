@@ -37,7 +37,7 @@ const Slider = ({ url, limit, page }) => {
         if(url !== '') fetchImages(url)
     }, [url])
 
-    console.log(images)
+    // console.log(images)
 
     if(loading){
       return(
