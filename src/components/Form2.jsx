@@ -264,12 +264,12 @@ return (
               step='1'
               />
                 {/* Input */}
-                <label htmlFor='country'>Country</label> <br />
+                <label htmlFor='country'>Country</label>
             <select name='country' onChange={handleChange} id='country'>
               {selectOptions}
             </select>
                 {/* Input */}
-                <p>Gender</p>
+                <label>Gender</label>
                 <input
                 type='radio'
                 id='female'
@@ -298,7 +298,7 @@ return (
                 />
               <label className='inline' htmlFor='other'>Other</label>
                 {/* Input */}
-                <p>Select your skills</p>
+                <label>Select your skills</label>
                 <input
                 type='checkbox'
                 id='html'
