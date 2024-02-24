@@ -15,18 +15,6 @@ header{
 h4{
   font-size: 18px;
 }
-.mt-24{
-  margin-top: 24px;
-}
-.mb-24{
-  margin-bottom: 24px;
-}
-.mt-12{
-  margin-top: 12px;
-}
-.mb-12{
-  margin-bottom: 12px;
-}
 .link{
   text-decoration: none;
   color: #4e4e4e;
@@ -133,6 +121,15 @@ textarea{
   border: 2px solid rgba(52, 73, 94, 0.3);
   display: block;
   margin-bottom: 24px;
+}
+select{
+  padding: 8px 16px;
+  border: none;
+  width: min(400px, 100%);
+  outline-color: transparent;
+  border-radius: 4px;
+  border: 2px solid rgba(52, 73, 94, 0.3);
+  font-size: 18px
 }
 .question{
   font-size: 24px;
@@ -314,7 +311,7 @@ textarea{
   margin-bottom: 12px;
   color: #2e2e2e;
   display: flex;
-  width: 300px;
+  width: 500px;
   padding-bottom: 8px;
   border-bottom: 1px solid  rgba(74, 105, 189, 0.6);
 }
@@ -327,6 +324,18 @@ textarea{
 }
 .card-right{
   flex: 1;
+}
+.mt-24{
+  margin-top: 24px;
+}
+.mb-24{
+  margin-bottom: 24px;
+}
+.mt-12{
+  margin-top: 12px;
+}
+.mb-12{
+  margin-bottom: 12px;
 }
 @media (width < 992px) {
   header, main, footer{

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const options = [
   {
     value: '',
-    label: '-- Select Country--',
+    label: 'Select Country',
   },
   {
     value: 'Finland',
@@ -62,12 +62,26 @@ const Form2 = () => {
     }
   })
 
+  let data
+
   const handleChange = (e) => {
     const {name, type, value, checked} = e.target
     const val = type === 'file' ? e.target.files[0] : value
-    setState({
-      ...state, 
-      [name]: type === 'checkbox'? checked: val})
+    if(type === 'checkbox'){
+        setState({
+          ...state,
+          skills: {
+            ...state.skills,
+            [name]: checked
+          }
+        })
+    }else{ 
+      setState({
+        ...state, 
+        [name]: val})
+      // console.log('Value', val);
+      // console.log('state', state.favoriteColor);
+      }
   }
 
   const handleSubmit = (e) => {
@@ -90,32 +104,87 @@ const Form2 = () => {
 
     const formattedSkills = []
     for (const key in skills){
-      console.log(key)
+      // console.log(key)
       if (skills[key]){
         formattedSkills.push(key)
     }
   }
 
-  const data = {
-    firstName,
-    lastName,
-    email,
-    tel,
-    dateOfBirth,
-    favoriteColor,
-    weight,
-    country,
+  
+  setState({
+    ...state,
+    data: {
+      firstName: state.firstName,
+    lastName: state.lastName,
+    email: state.email,
+    country: state.country,
+    tel: state.tel,
+    dateOfBirth: state.dateOfBirth,
+    favoriteColor: state.favoriteColor,
+    weight: state.weight,
+    gender: state.gender,
+    file: state.file ? file : null,
+    bio: state.bio,
+    skills: formattedSkills
+  },
+  firstName: '',
+  lastName: '',
+  email: '',
+  country: '',
+  tel: '',
+  dateOfBirth: '',
+  favoriteColor: '#ffffff',
+  weight: '',
+  gender: '',
+  file: '',
+  bio: '',
+  skills: {
+    html: false,
+    css: false,
+    javascript: false,
+  },
+})
+
+data = {
+  firstName,
+  lastName,
+  email,
+  tel,
+  dateOfBirth,
+  favoriteColor,
+  weight,
+  country,
     gender,
     bio,
     file,
     skills: formattedSkills,
   }
-  console.log(data)
+  // console.log(data)
 }
 
-  return (
+const clearData = () => {
+  setState({
+    ...state,
+    data: {
+      firstName: '',
+    lastName: '',
+    email: '',
+    country: '',
+    tel: '',
+    dateOfBirth: '',
+    favoriteColor: '',
+    weight: '',
+    gender: '',
+    file: '',
+    bio: '',
+    skills: []
+    }
+  })
+}
 
-    <section>
+return (
+
+  <section>
       <div className="card forms-2">
         <h2>Forms 2</h2>
         <div className="card-body">
@@ -176,7 +245,7 @@ const Form2 = () => {
             <input
               type='color'
               id='color'
-              name='color'
+              name='favoriteColor'
               value={state.favoriteColor}
               onChange={handleChange}
               placeholder='Favorite Color'
@@ -265,15 +334,24 @@ const Form2 = () => {
                 {/* Input */}
                 <input type='file' name='file' onChange={handleChange} />
                 {/* Input */}
-                <button type='submit' className="btn">Submit Data</button>
+                <button type='submit' className="btn mt-24">Submit Data</button>
         </form>
           </div>
         <div className="card-right">
           <h2>Submited Data</h2>
-          {/* <p className='data'><span className="data-span">First Name:</span> {data.firstName}</p>
-                <p className='data'><span className="data-span">Last Name:</span> {data.lastName}</p>
-                <p className='data'><span className="data-span">Country:</span> {data.country}</p>
-                <p className='data'><span className="data-span">Title:</span> {data.title}</p> */}
+          <p className='data'><span className="data-span">First Name:</span> {state.data.firstName}</p>
+                <p className='data'><span className="data-span">Last Name:</span> {state.data.lastName}</p>
+                <p className='data'><span className="data-span">Email:</span> {state.data.email}</p>
+                <p className='data'><span className="data-span">Phone:</span> {state.data.tel}</p>
+                <p className='data'><span className="data-span">Birth:</span> {state.data.dateOfBirth}</p>
+                <p className='data'><span className="data-span">Color:</span> {state.data.favoriteColor}</p>
+                <p className='data'><span className="data-span">Weight:</span> {state.data.weight} kg</p>
+                <p className='data'><span className="data-span">Country:</span> {state.data.country}</p>
+                <p className='data'><span className="data-span">Gender:</span> {state.data.gender}</p>
+                <p className='data'><span className="data-span">Skills:</span>{state.data.skills.join(', ')}</p>
+                <p className='data'><span className="data-span">Bio:</span>{state.data.bio}</p>
+                <p className='data'><span className="data-span">CV:</span>{state.data.file.name}</p>
+                <button className="btn mt-24" onClick={clearData}>Clear Data</button>
         </div>
         </div>
       </div>
