@@ -39,7 +39,7 @@ const Form2 = () => {
     favoriteColor: '#ffffff',
     weight: '',
     gender: '',
-    file: '',
+    file: 'none',
     bio: '',
     skills: {
       html: false,
@@ -75,7 +75,8 @@ const Form2 = () => {
             [name]: checked
           }
         })
-    }else{ 
+    }
+    else{ 
       setState({
         ...state, 
         [name]: val})
@@ -104,13 +105,29 @@ const Form2 = () => {
 
     const formattedSkills = []
     for (const key in skills){
-      // console.log(key)
+      // console.log(key) 
       if (skills[key]){
         formattedSkills.push(key)
     }
   }
-
   
+  
+  
+  data = {
+    firstName,
+    lastName,
+    email,
+    tel,
+    dateOfBirth,
+    favoriteColor,
+    weight,
+    country,
+    gender,
+    bio,
+    file,
+    skills: formattedSkills,
+  }
+
   setState({
     ...state,
     data: {
@@ -121,9 +138,9 @@ const Form2 = () => {
     tel: state.tel,
     dateOfBirth: state.dateOfBirth,
     favoriteColor: state.favoriteColor,
-    weight: state.weight,
+    weight: `${state.weight} kg`,
     gender: state.gender,
-    file: state.file ? file : null,
+    file: state.file,
     bio: state.bio,
     skills: formattedSkills
   },
@@ -136,7 +153,7 @@ const Form2 = () => {
   favoriteColor: '#ffffff',
   weight: '',
   gender: '',
-  file: '',
+  file: 'none',
   bio: '',
   skills: {
     html: false,
@@ -144,21 +161,6 @@ const Form2 = () => {
     javascript: false,
   },
 })
-
-data = {
-  firstName,
-  lastName,
-  email,
-  tel,
-  dateOfBirth,
-  favoriteColor,
-  weight,
-  country,
-    gender,
-    bio,
-    file,
-    skills: formattedSkills,
-  }
   // console.log(data)
 }
 
@@ -345,11 +347,11 @@ return (
                 <p className='data'><span className="data-span">Phone:</span> {state.data.tel}</p>
                 <p className='data'><span className="data-span">Birth:</span> {state.data.dateOfBirth}</p>
                 <p className='data'><span className="data-span">Color:</span> {state.data.favoriteColor}</p>
-                <p className='data'><span className="data-span">Weight:</span> {state.data.weight} kg</p>
+                <p className='data'><span className="data-span">Weight:</span> {state.data.weight}</p>
                 <p className='data'><span className="data-span">Country:</span> {state.data.country}</p>
                 <p className='data'><span className="data-span">Gender:</span> {state.data.gender}</p>
                 <p className='data'><span className="data-span">Skills:</span>{state.data.skills.join(', ')}</p>
-                <p className='data'><span className="data-span">Bio:</span>{state.data.bio}</p>
+                <p className='data'><span className="data-span">Bio:</span>{state.data.bio.length < 20 ? state.data.bio : `${state.data.bio.slice(0, 20)}...`}</p>
                 <p className='data'><span className="data-span">CV:</span>{state.data.file.name}</p>
                 <button className="btn mt-24" onClick={clearData}>Clear Data</button>
         </div>
